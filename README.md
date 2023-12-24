@@ -1,2 +1,4 @@
 # cghttpd
-Coronet plus GUASI HTTP server
+
+For more information see [cghttpd](http://www.xmailserver.org/cghttpd-home.html).
+
