@@ -1,0 +1,158 @@
+.\"
+.\"  cghttpd by Davide Libenzi (coronet/guasi based HTTP server)
+.\"  Copyright (C) 2007  Davide Libenzi
+.\"
+.\"  This program is free software; you can redistribute it and/or modify
+.\"  it under the terms of the GNU General Public License as published by
+.\"  the Free Software Foundation; either version 2 of the License, or
+.\"  (at your option) any later version.
+.\"
+.\"  This program is distributed in the hope that it will be useful,
+.\"  but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\"  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\"  GNU General Public License for more details.
+.\"
+.\"  You should have received a copy of the GNU General Public License
+.\"  along with this program; if not, write to the Free Software
+.\"  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+.\"
+.\"  Davide Libenzi <davidel@xmailserver.org>
+.\"
+.\"
+.TH cghttpd 8 "26 March 2007" "Davide Libenzi" 0.29
+.SH NAME
+.B cghttpd
+\- coronet/guasi based HTTP server
+
+.SH SYNOPSIS
+.B cghttpd
+.RB [ -p
+.IR PORT ]
+.RB [ -r
+.IR ROOTFS ]
+.RB [ -L
+.IR LSNBKLOG ]
+.RB [ -S
+.IR STKSIZE ]
+.RB [ -m
+.IR MINTHREAD ]
+.RB [ -M
+.IR MAXTHREADS ]
+.RB [ -N ]
+.RB [ -h ]
+
+.SH DESCRIPTION
+.B cghttpd
+is a simple web server that can be used to measure the performance of
+network events delivery and generic IO completions, driven by a coroutine
+based dispatch engine. The
+.B cghttpd
+server is based on the
+.B coronet
+library available at the following URL
+.BR http://www.xmailserver.org/coronet-lib.html " ."
+The
+.B coronet
+library is in turn based on the
+.B epoll
+support available in the 2.6 (or newer) serie of
+.B Linux
+kernels, with
+.B glibc
+version of 2.3.2 or newer. The
+.B coronet
+library is also based on
+.B libpcl
+available at the following URL
+.BR http://www.xmailserver.org/libpcl.html " ."
+The
+.B cghttpd
+server is finally based on the
+.B guasi
+library, that allows it to handle potentially blocking system calls, in an
+asyncrounous way. The
+.B guasi
+library is available at the following URL
+.BR http://www.xmailserver.org/guasi-lib.html " ."
+The
+.B cghttpd
+will not daemonize, and ^C can be used to stop it.
+
+
+.SH OPTIONS
+The following options are recognized by
+.BR cghttpd :
+.TP
+.BI -p " PORT"
+Specifies the port onto which
+.B cghttpd
+will listen to
+.IR PORT .
+.TP
+.BI -r " ROOTFS"
+Specifies the home directory for
+.B cghttpd
+to
+.IR ROOTFS .
+.TP
+.BI -L " LSNBKLOG"
+Specifies the
+.BR listen (2)
+backlog size to
+.IR LSNBKLOG .
+.TP
+.BI -S " STKSIZE"
+Specifies the stack size to be used for the coroutines to
+.IR STKSIZE .
+.TP
+.BI -m " MINTHREAD"
+Specifies the minimum number of threads for the
+.B guasi
+thread pool to
+.IR MINTHREAD .
+.TP
+.BI -M " MAXTHREAD"
+Specifies the maximum number of threads for the
+.B guasi
+thread pool to
+.IR MAXTHREAD .
+.TP
+.B -N
+Uses the
+.B O_NOATIME
+flag when opening the content file.
+.TP
+.B -h
+Prints a usage screen.
+
+
+.SH BUGS
+There are no known bugs.  Bug reports and comments to:
+
+Davide Libenzi
+.RB < davidel@xmailserver.org >
+
+.SH SOURCE
+The latest source code is available at:
+
+.B http://www.xmailserver.org/cghttpd-home.html
+
+.SH LICENSE
+The
+.B cghttpd
+server is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either
+version 2.0 of the License, or (at your option) any later version.
+A copy of the license is available at:
+
+.B http://www.gnu.org/licenses/gpl.html
+
+.SH AUTHORS
+The
+.B glst
+package has been developed by:
+
+Davide Libenzi
+.RB < davidel@xmailserver.org >
+

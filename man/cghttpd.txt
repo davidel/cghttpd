@@ -1,0 +1,91 @@
+cghttpd(8)                           0.29                           cghttpd(8)
+
+
+
+NAME
+       cghttpd - coronet/guasi based HTTP server
+
+
+SYNOPSIS
+       cghttpd [-p PORT] [-r ROOTFS] [-L LSNBKLOG] [-S STKSIZE] [-m MINTHREAD]
+       [-M MAXTHREADS] [-N] [-h]
+
+
+DESCRIPTION
+       cghttpd is a simple web server that can be used to measure the  perfor-
+       mance  of network events delivery and generic IO completions, driven by
+       a coroutine based dispatch engine. The cghttpd server is based  on  the
+       coronet      library     available     at     the     following     URL
+       http://www.xmailserver.org/coronet-lib.html .  The coronet  library  is
+       in  turn  based  on  the  epoll support available in the 2.6 (or newer)
+       serie of Linux kernels, with glibc version of 2.3.2 or newer. The coro-
+       net  library  is  also  based  on libpcl available at the following URL
+       http://www.xmailserver.org/libpcl.html .  The cghttpd server is finally
+       based on the guasi library, that allows it to handle potentially block-
+       ing system calls, in an asyncrounous way. The guasi library  is  avail-
+       able  at  the following URL http://www.xmailserver.org/guasi-lib.html .
+       The cghttpd will not daemonize, and ^C can be used to stop it.
+
+
+
+OPTIONS
+       The following options are recognized by cghttpd:
+
+       -p PORT
+              Specifies the port onto which cghttpd will listen to PORT.
+
+       -r ROOTFS
+              Specifies the home directory for cghttpd to ROOTFS.
+
+       -L LSNBKLOG
+              Specifies the listen(2) backlog size to LSNBKLOG.
+
+       -S STKSIZE
+              Specifies the stack size to be used for the coroutines  to  STK-
+              SIZE.
+
+       -m MINTHREAD
+              Specifies  the  minimum  number  of threads for the guasi thread
+              pool to MINTHREAD.
+
+       -M MAXTHREAD
+              Specifies the maximum number of threads  for  the  guasi  thread
+              pool to MAXTHREAD.
+
+       -N     Uses the O_NOATIME flag when opening the content file.
+
+       -h     Prints a usage screen.
+
+
+
+BUGS
+       There are no known bugs.  Bug reports and comments to:
+
+       Davide Libenzi <davidel@xmailserver.org>
+
+
+SOURCE
+       The latest source code is available at:
+
+       http://www.xmailserver.org/cghttpd-home.html
+
+
+LICENSE
+       The  cghttpd  server  is  free software; you can redistribute it and/or
+       modify it under the terms of the GNU General  Public  License  as  pub-
+       lished  by  the  Free  Software  Foundation;  either version 2.0 of the
+       License, or (at your option) any later version.  A copy of the  license
+       is available at:
+
+       http://www.gnu.org/licenses/gpl.html
+
+
+AUTHORS
+       The glst package has been developed by:
+
+       Davide Libenzi <davidel@xmailserver.org>
+
+
+
+
+Davide Libenzi                   26 March 2007                      cghttpd(8)

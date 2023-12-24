@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of cghttpd</TITLE>
+</HEAD><BODY text="#0000FF" bgcolor="#FFFFFF" style="font-family: monospace;">
+<H1>cghttpd</H1>
+Section: 0.29 (8)<BR>Updated: 26 March 2007<BR><A HREF="#index">Index</A>
+<A HREF="/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+<B>cghttpd</B>
+
+- coronet/guasi based HTTP server
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>cghttpd</B>
+
+[<B>-p</B>
+
+<I>PORT</I>]
+
+[<B>-r</B>
+
+<I>ROOTFS</I>]
+
+[<B>-L</B>
+
+<I>LSNBKLOG</I>]
+
+[<B>-S</B>
+
+<I>STKSIZE</I>]
+
+[<B>-m</B>
+
+<I>MINTHREAD</I>]
+
+[<B>-M</B>
+
+<I>MAXTHREADS</I>]
+
+[<B>-N</B>]
+
+[<B>-h</B>]
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<B>cghttpd</B>
+
+is a simple web server that can be used to measure the performance of
+network events delivery and generic IO completions, driven by a coroutine
+based dispatch engine. The
+<B>cghttpd</B>
+
+server is based on the
+<B>coronet</B>
+
+library available at the following URL
+<B><A HREF="http://www.xmailserver.org/coronet-lib.html">http://www.xmailserver.org/coronet-lib.html</A></B> .
+
+The
+<B>coronet</B>
+
+library is in turn based on the
+<B>epoll</B>
+
+support available in the 2.6 (or newer) serie of
+<B>Linux</B>
+
+kernels, with
+<B>glibc</B>
+
+version of 2.3.2 or newer. The
+<B>coronet</B>
+
+library is also based on
+<B>libpcl</B>
+
+available at the following URL
+<B><A HREF="http://www.xmailserver.org/libpcl.html">http://www.xmailserver.org/libpcl.html</A></B> .
+
+The
+<B>cghttpd</B>
+
+server is finally based on the
+<B>guasi</B>
+
+library, that allows it to handle potentially blocking system calls, in an
+asyncrounous way. The
+<B>guasi</B>
+
+library is available at the following URL
+<B><A HREF="http://www.xmailserver.org/guasi-lib.html">http://www.xmailserver.org/guasi-lib.html</A></B> .
+
+The
+<B>cghttpd</B>
+
+will not daemonize, and ^C can be used to stop it.
+<P>
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+The following options are recognized by
+<B>cghttpd</B>:
+
+<DL COMPACT>
+<DT><B>-p</B><I> PORT</I>
+
+<DD>
+Specifies the port onto which
+<B>cghttpd</B>
+
+will listen to
+<I>PORT</I>.
+
+<DT><B>-r</B><I> ROOTFS</I>
+
+<DD>
+Specifies the home directory for
+<B>cghttpd</B>
+
+to
+<I>ROOTFS</I>.
+
+<DT><B>-L</B><I> LSNBKLOG</I>
+
+<DD>
+Specifies the
+<B><A HREF="/cgi-bin/man/man2html?2+listen">listen</A></B>(2)
+
+backlog size to
+<I>LSNBKLOG</I>.
+
+<DT><B>-S</B><I> STKSIZE</I>
+
+<DD>
+Specifies the stack size to be used for the coroutines to
+<I>STKSIZE</I>.
+
+<DT><B>-m</B><I> MINTHREAD</I>
+
+<DD>
+Specifies the minimum number of threads for the
+<B>guasi</B>
+
+thread pool to
+<I>MINTHREAD</I>.
+
+<DT><B>-M</B><I> MAXTHREAD</I>
+
+<DD>
+Specifies the maximum number of threads for the
+<B>guasi</B>
+
+thread pool to
+<I>MAXTHREAD</I>.
+
+<DT><B>-N</B>
+
+<DD>
+Uses the
+<B>O_NOATIME</B>
+
+flag when opening the content file.
+<DT><B>-h</B>
+
+<DD>
+Prints a usage screen.
+<P>
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>BUGS</H2>
+
+There are no known bugs.  Bug reports and comments to:
+<P>
+Davide Libenzi
+&lt;<B><A HREF="mailto:davidel@xmailserver.org">davidel@xmailserver.org</A></B>&gt;
+
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SOURCE</H2>
+
+The latest source code is available at:
+<P>
+<B><A HREF="http://www.xmailserver.org/cghttpd-home.html">http://www.xmailserver.org/cghttpd-home.html</A></B>
+
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>LICENSE</H2>
+
+The
+<B>cghttpd</B>
+
+server is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either
+version 2.0 of the License, or (at your option) any later version.
+A copy of the license is available at:
+<P>
+<B><A HREF="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</A></B>
+
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+The
+<B>glst</B>
+
+package has been developed by:
+<P>
+Davide Libenzi
+&lt;<B><A HREF="mailto:davidel@xmailserver.org">davidel@xmailserver.org</A></B>&gt;
+
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">BUGS</A><DD>
+<DT><A HREF="#lbAG">SOURCE</A><DD>
+<DT><A HREF="#lbAH">LICENSE</A><DD>
+<DT><A HREF="#lbAI">AUTHORS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 07:39:07 GMT, April 10, 2007
+</BODY>
+</HTML>
